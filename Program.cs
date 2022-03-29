@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CoffeeMaker;
 
 namespace CoffeeMakerApp
 {
@@ -10,6 +11,8 @@ namespace CoffeeMakerApp
     {
         public static void Main(string[] args)
         {
+
+            /*
             string[] items = new[] { "espresso", "latte", "cappuccino" };
             int[] items_water = new[] { 50, 200, 250 };
             int[] items_cream = new[] { 0, 150, 100 };
@@ -129,6 +132,7 @@ namespace CoffeeMakerApp
                         break;
                 }
             } while (machineOn);
+            */
         }
     }
 }
