@@ -14,6 +14,9 @@ namespace CoffeeMaker
         private int[] _ingredientsUsed = { 0, 0, 0, 0 };
         private decimal _cost = 0;
 
+        public int[] IngredientsUsed { get { return _ingredientsUsed; } }
+        public string Name { get { return _name; } }
+        public decimal Cost { get { return _cost; } }
         public Drink(string name, decimal cost, int water, int cream, int coffee, int sugar)
         {
             _name = name;

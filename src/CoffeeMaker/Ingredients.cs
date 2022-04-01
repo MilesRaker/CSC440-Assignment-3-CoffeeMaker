@@ -59,8 +59,8 @@ namespace CoffeeMaker
         /// <returns>true: can make, false: cannot make</returns>
         public bool canMakeDrink(int[] ingredientsNeeded)
         {
-            return ingredientsNeeded[0] < _ingredientCount[0] && ingredientsNeeded[1] < _ingredientCount[1] 
-                && ingredientsNeeded[2] < _ingredientCount[2] && ingredientsNeeded[3] < _ingredientCount[3];
+            return ingredientsNeeded[0] <= _ingredientCount[0] && ingredientsNeeded[1] <= _ingredientCount[1] 
+                && ingredientsNeeded[2] <= _ingredientCount[2] && ingredientsNeeded[3] <= _ingredientCount[3];
         }
         /// <summary>
         /// Checks current stock of particular ingredient
