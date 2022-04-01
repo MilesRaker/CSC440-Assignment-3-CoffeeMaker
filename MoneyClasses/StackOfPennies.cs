@@ -1,5 +1,5 @@
 ﻿// this file is showing up in folder MoneyClasses, but the path has it outside.
-namespace CoffeeMaker
+namespace CoffeeMaker.MoneyClasses
 {
     public class StackOfPennies : StackOfMoney
     {
