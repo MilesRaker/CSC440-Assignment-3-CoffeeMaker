@@ -34,21 +34,34 @@ namespace CoffeeMaker
         /// If there is enough supply for the method call, then method decreases the amount in storage and returns true
         /// If there is not enough supply, method returns false. No changes made to internal fields
         /// </returns>
-        public bool useIngredient(string ingredient, int amountUsed)
+        public void useIngredients(int[] ingredientsNeeded)
         {
-            int ingredientIndex = getIndex(ingredient);
 
-            if (getStock(ingredient) > amountUsed)
+            if (canMakeDrink(ingredientsNeeded))
             {
-                _ingredientCount[ingredientIndex] = _ingredientCount[ingredientIndex] - amountUsed;
-                return true;
+                for (int i = 0; i < 4; i++)
+                {
+                    _ingredientCount[i] -= ingredientsNeeded[i];
+                }
+
             }
             else
             {
-                return false;
+                throw new Exception("Not enough ingredients to make this drink");
             }
+
         }
 
+        /// <summary>
+        /// Helper. Checks if there is enough stock to make a drink
+        /// </summary>
+        /// <param name="ingredientsNeeded">amount of each ingredient needed to make the drink</param>
+        /// <returns>true: can make, false: cannot make</returns>
+        public bool canMakeDrink(int[] ingredientsNeeded)
+        {
+            return ingredientsNeeded[0] < _ingredientCount[0] && ingredientsNeeded[1] < _ingredientCount[1] 
+                && ingredientsNeeded[2] < _ingredientCount[2] && ingredientsNeeded[3] < _ingredientCount[3];
+        }
         /// <summary>
         /// Checks current stock of particular ingredient
         /// </summary>
@@ -60,6 +73,10 @@ namespace CoffeeMaker
             return _ingredientCount[indexOfIngredientUsed];
         }
 
+        public int[] getStock()
+        {
+            return _ingredientCount;
+        }
         /// <summary>
         /// Finds the index of a particular ingredient
         /// </summary>
@@ -73,7 +90,7 @@ namespace CoffeeMaker
         /// <summary>
         /// Restocks ingredients
         /// </summary>
-        public void refillIngredients()
+        public void restock()
         {
             _ingredientCount[0] = 300;
             _ingredientCount[1] = 200;
