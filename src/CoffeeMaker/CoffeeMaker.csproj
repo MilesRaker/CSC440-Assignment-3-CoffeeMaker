@@ -7,4 +7,26 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Drinks\Cappuccino.txt" />
+    <None Remove="Drinks\Espresso.txt" />
+    <None Remove="Drinks\Late.txt" />
+    <None Remove="Drinks\SugarHigh.txt" />
+    <None Remove="Resources\coffee.txt" />
+    <None Remove="Resources\cream.txt" />
+    <None Remove="Resources\sugar.txt" />
+    <None Remove="Resources\water.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Drinks\Cappuccino.txt" />
+    <Content Include="Drinks\Espresso.txt" />
+    <Content Include="Drinks\Late.txt" />
+    <Content Include="Drinks\SugarHigh.txt" />
+    <Content Include="Resources\coffee.txt" />
+    <Content Include="Resources\cream.txt" />
+    <Content Include="Resources\sugar.txt" />
+    <Content Include="Resources\water.txt" />
+  </ItemGroup>
+
 </Project>

@@ -13,7 +13,7 @@ namespace CoffeeMakerTest
         public void CreateDrinks(string name, double cost, int water, int cream, int coffee, int sugar, int[] expected)
         {
             // arrange
-            Drink drink = new Drink(name, cost, water, cream, coffee, sugar);
+            Drink drink = new Drink(name, Convert.ToDecimal(cost), water, cream, coffee, sugar);
             Ingredients ingredients = new Ingredients();
 
             // act

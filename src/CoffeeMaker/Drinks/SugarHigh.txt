@@ -1,0 +1,1 @@
+﻿{name:"SugarHigh", price:5M, water:25, cream:25, coffee:50, sugar:35}

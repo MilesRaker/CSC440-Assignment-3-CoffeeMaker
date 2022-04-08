@@ -10,16 +10,51 @@ namespace CoffeeMaker
     {
         private Ingredients _stock = new Ingredients();
         private decimal _cash = 10;
-        private Drink[] _menue = 
-            { new Drink("Espresso", 1.5M, 50, 0, 25, 0),
-            new Drink("Late", 2.5M, 50, 25, 25, 0),
-            new Drink("Cappuccino", 3M, 0, 50, 50, 0),
-            new Drink("SugarHigh", 5M, 25, 25, 50, 35)};
-        public decimal[] Price { get { return new decimal[4] { 1.5M, 2.5M, 3M, 5M }; } }
+        // look for and store file names in Drinks folder
+
+        private Drink[] _menue = {};
+        public decimal[] Price { get { return new decimal[4] { _menue[0].Cost, _menue[1].Cost, _menue[2].Cost, _menue[3].Cost }; } }
         private bool _power = true; // is the coffee maker powered on?
         private bool _notEnoughChange = false;
         public bool Power { get { return _power; } }
-        public CoffeeMachine() { }
+
+        /// <summary>
+        /// Constructor, reads Drink files to initialize _menue
+        /// </summary>
+        public CoffeeMachine() 
+        {
+            IEnumerable<FileInfo> drinkFiles = getDrinkFiles();
+            FileInfo[] drinkFilesArray = drinkFiles.ToArray();
+            Drink[] menue = new Drink[drinkFilesArray.Length];
+            for (int i = 0; i < drinkFiles.Count(); i++)
+            {
+                menue[i] = getDrinkFromFile(drinkFilesArray[i].FullName);
+            }
+            _menue = menue;
+        }
+
+        /// <summary>
+        /// Find all drink files in Drink directory
+        /// </summary>
+        /// <returns>Enumerable with FileInfo for each drink file</returns>
+        private static IEnumerable<FileInfo> getDrinkFiles()
+        {
+            DirectoryInfo drinkDirectory = new DirectoryInfo(@"./../../../Drinks");
+            IEnumerable<FileInfo> drinkFiles = drinkDirectory.EnumerateFiles();
+            return drinkFiles;
+        }
+        /// <summary>
+        /// Reads a drink file and creates a Drink object
+        /// </summary>
+        /// <param name="arg">path to a drink file</param>
+        /// <returns>Drink object</returns>
+        private static Drink getDrinkFromFile(string arg)
+        {
+            // open file
+            // read data from file
+            string[] lines = System.IO.File.ReadAllLines(@arg);
+            return new Drink(lines[0], decimal.Parse(lines[1]), int.Parse(lines[2]), int.Parse(lines[3]), int.Parse(lines[4]), int.Parse(lines[5]));
+        }
 
         /// <summary>
         /// for use with menu option: "Report"
